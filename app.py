@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 
 # 1. 데이터베이스(CSV) 불러오기
-# 노션에서 내보낸 CSV 파일 이름을 'keywords1.csv'라고 가정합니다.
+# 노션에서 내보낸 CSV 파일 이름을 'keywords.csv'라고 가정합니다.
 @st.cache_data
 def load_data():
-    df = pd.read_csv('keywords1.csv') 
+    df = pd.read_csv('keywords.csv') 
     return df
 
 df = load_data()
@@ -14,7 +14,7 @@ st.title("🚦 폴-신호등: 위기 시그널 포착")
 st.write("지금 겪고 있는 상황을 편하게 입력해 보세요.")
 
 # 2. 사용자 입력창
-user_input = st.text_input("검색어 예: 돈 뺏겼어, 생일선물 보내래, 킥보드 타도 돼?")
+user_input = st.text_input("검색어 예: 돈 뺏겼어, 기프티콘 보내래, 킥보드 타도 돼?")
 
 if user_input:
     found = False
@@ -26,7 +26,7 @@ if user_input:
         
         # 사용자가 입력한 문장에 키워드 중 하나라도 포함되어 있는지 확인
         if any(key in user_input for key in keywords):
-            st.markdown(f"### 🔍 시그널 포착: **{row['상황 구분']}**")
+            st.markdown(f"### 🔍 시그널 포착: **{row['키워드검색']}**")
             
             # 신호등 상태에 따른 알림 색상 변경
             status = row['신호등 상태']
