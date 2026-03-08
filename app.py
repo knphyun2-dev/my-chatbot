@@ -61,7 +61,7 @@ if user_input and df is not None:
                     break
             
             if url:
-                st.link_button("👉 경찰관의 상세 진단서 확인하기", url)
+                st.link_button("👉 경찰관의 상세 진단서 확인하기", https://www.notion.so/31c2bcabaa8481bb8248f174fb2bd92c?source=copy_link)
             else:
                 st.info("⚠️ 연결할 상세 페이지 링크를 찾지 못했습니다. CSV 파일을 확인해 주세요.")
                 
@@ -70,3 +70,4 @@ if user_input and df is not None:
             
     if not found:
         st.info("입력하신 내용에 대한 시그널을 찾지 못했습니다. 핵심 단어 위주로 다시 검색해 보세요.")
+
