@@ -1,36 +1,46 @@
 import streamlit as st
+import pandas as pd
 
-# 페이지 설정 (아이콘과 제목)
-st.set_page_config(page_title="위기 상황 대응 챗봇", page_icon="🛡️")
+# 1. 데이터베이스(CSV) 불러오기
+# 노션에서 내보낸 CSV 파일 이름을 'keywords1.csv'라고 가정합니다.
+@st.cache_data
+def load_data():
+    df = pd.read_csv('keywords1.csv') 
+    return df
 
-st.markdown("### 🔍 궁금한 키워드를 입력하세요")
-st.caption("예: 돈, 킥보드, 협박, 사진, 뺑소니")
+df = load_data()
 
-# 검색창 생성
-keyword = st.text_input("검색어 입력", placeholder="여기에 입력하세요...", label_visibility="collapsed")
+st.title("🚦 폴-신호등: 위기 시그널 포착")
+st.write("지금 겪고 있는 상황을 편하게 입력해 보세요.")
 
-# 🔗 여기에 복사한 노션 링크를 붙여넣으세요!
-notion_links = {
-    "돈": "https://www.notion.so/31c2bcabaa848125a8c7c59385bd683d?source=copy_link",
-    "빌려": "https://www.notion.so/your-page-id-돈문제",
-    "갈취": "https://www.notion.so/your-page-id-돈문제",
-    "킥보드": "https://www.notion.so/your-page-id-교통범죄",
-    "운전": "https://www.notion.so/your-page-id-교통범죄",
-    "면허": "https://www.notion.so/your-page-id-교통범죄",
-    "사진": "https://www.notion.so/your-page-id-성범죄",
-    "협박": "https://www.notion.so/your-page-id-성범죄",
-    "유포": "https://www.notion.so/your-page-id-성범죄"
-}
+# 2. 사용자 입력창
+user_input = st.text_input("검색어 예: 돈 뺏겼어, 생일선물 보내래, 킥보드 타도 돼?")
 
-if keyword:
+if user_input:
     found = False
-    # 키워드가 포함되어 있는지 확인
-    for key, link in notion_links.items():
-        if key in keyword:
-            st.success(f"'{key}' 관련 대응 가이드를 찾았습니다!")
-            st.link_button("👉 상세 페이지로 이동하기", link)
+    
+    # 3. 데이터베이스 훑기 (유사어 그룹화 로직 반영)
+    for index, row in df.iterrows():
+        # '검색 키워드' 열에 있는 단어들을 콤마로 분리
+        keywords = [k.strip() for k in str(row['검색 키워드']).split(',')]
+        
+        # 사용자가 입력한 문장에 키워드 중 하나라도 포함되어 있는지 확인
+        if any(key in user_input for key in keywords):
+            st.markdown(f"### 🔍 시그널 포착: **{row['상황 구분']}**")
+            
+            # 신호등 상태에 따른 알림 색상 변경
+            status = row['신호등 상태']
+            if "🔴" in status or "위험" in status:
+                st.error(f"🚨 현재 상황은 **[빨간불: 위험]** 단계입니다. 범죄 가능성이 높아요.")
+            elif "🟡" in status or "주의" in status:
+                st.warning(f"⚠️ 현재 상황은 **[노란불: 주의]** 단계입니다. 도움이 필요해요.")
+            else:
+                st.success(f"🟢 현재 상황은 **[초록불: 안전]** 단계입니다.")
+            
+            # 연결 링크 버튼
+            st.link_button("👉 경찰관의 상세 진단서 확인하기", row['https://www.notion.so/31c2bcabaa8481bb8248f174fb2bd92c?source=copy_link'])
             found = True
             break
-    
+            
     if not found:
-        st.error("앗! 검색 결과가 없어요. '돈', '사진', '면허' 등으로 검색해보세요.")
+        st.info("입력하신 내용에 대한 시그널을 찾지 못했습니다. 핵심 단어(돈, 사진, 킥보드 등) 위주로 다시 입력해 보시겠어요?")
