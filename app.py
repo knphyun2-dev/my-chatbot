@@ -22,11 +22,11 @@ if user_input:
     # 3. 데이터베이스 훑기 (유사어 그룹화 로직 반영)
     for index, row in df.iterrows():
         # '검색 키워드' 열에 있는 단어들을 콤마로 분리
-        keywords = [k.strip() for k in str(row['검색 키워드']).split(',')]
+        keywords = [k.strip() for k in str(row['키워드검색']).split(',')]
         
         # 사용자가 입력한 문장에 키워드 중 하나라도 포함되어 있는지 확인
         if any(key in user_input for key in keywords):
-            st.markdown(f"### 🔍 시그널 포착: **{row['키워드검색']}**")
+            st.markdown(f"### 🔍 시그널 포착: **{row['상황구분']}**")
             
             # 신호등 상태에 따른 알림 색상 변경
             status = row['신호등 상태']
@@ -44,3 +44,4 @@ if user_input:
             
     if not found:
         st.info("입력하신 내용에 대한 시그널을 찾지 못했습니다. 핵심 단어(돈, 사진, 킥보드 등) 위주로 다시 입력해 보시겠어요?")
+
