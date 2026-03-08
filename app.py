@@ -37,9 +37,10 @@ if user_input and df is not None:
             notion_link = "https://www.notion.so/31c2bcabaa8481bb8248f174fb2bd92c?source=copy_link"
             
             st.error("🚨 현재 상황은 **[빨간불: 위험]** 단계입니다.")
-            st.link_button("👉 경찰관의 대응 가이드 보기", notion_link)
+            st.link_button("👉 상세진단과 대응가이드 살펴보기", notion_link)
             found = True
             break
 
     if not found:
         st.info(f"'{user_query}'에 대한 시그널을 찾지 못했습니다. 단어를 바꿔서 검색해 보세요.")
+
