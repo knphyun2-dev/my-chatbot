@@ -75,8 +75,9 @@ if user_input and df is not None:
         st.warning(f"🧐 '{user_input}'와(과) 관련된 명확한 시그널을 찾지 못했습니다.")
         st.info("핵심 단어(예: 돈, 뺏, 박제, 폰) 위주로 다시 검색해 보세요.")
     else:
-        st.caption(f"총 {found_count}개의 관련 시그널을 찾았습니다.)
+        st.caption(f"총 {found_count}개의 관련 시그널을 찾았습니다.")
 
 # 하단 안내
 st.divider()
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
