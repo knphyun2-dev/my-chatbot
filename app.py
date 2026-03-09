@@ -33,7 +33,7 @@ st.title("🚦 POL-시그널")
 st.subheader("학생들의 시그널을 포착합니다.")
 st.write("문장으로 입력하셔도 핵심 키워드를 찾아 시그널을 포착합니다.")
 
-user_input = st.text_input("상황 입력 (예: 자꾸 돈을 달라고 해요, 카톡 감옥으로 괴롭혀요)", placeholder="여기에 상황을 설명해 보세요...")
+user_input = st.text_input("🔍 상황 입력 (예: 자꾸 돈을 달라고 해요, 카톡 감옥으로 괴롭혀요)", placeholder="여기에 상황을 설명해 보세요...")
 
 if user_input and df is not None:
     found_count = 0
@@ -100,4 +100,5 @@ if user_input and df is not None:
 # 하단 안내
 st.divider()
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
 
