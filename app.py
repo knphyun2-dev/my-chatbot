@@ -31,9 +31,9 @@ df = load_data()
 # 3. 메인 화면
 st.title("🚦 POL-시그널")
 st.subheader("학생들의 시그널을 포착합니다.")
-st.write("문장으로 입력하셔도 핵심 키워드를 찾아 분석해 드립니다.")
+st.write("문장으로 입력하셔도 핵심 키워드를 찾아 시그널을 포착합니다.")
 
-user_input = st.text_input("상황 입력 (예: 폭행을 당했어요, 선배가 공원에서 괴롭혀요)", placeholder="여기에 상황을 설명해 보세요...")
+user_input = st.text_input("상황 입력 (예: 자꾸 돈을 달라고 해요, 카톡 감옥으로 괴롭혀요)", placeholder="여기에 상황을 설명해 보세요...")
 
 if user_input and df is not None:
     found_count = 0
@@ -93,10 +93,11 @@ if user_input and df is not None:
     # 5. 검색 결과가 하나도 없을 때
     if found_count == 0:
         st.warning(f"🧐 '{user_input}'와(과) 관련된 명확한 시그널을 찾지 못했습니다.")
-        st.info("단어 위주로(예: 돈, 킥보드, 괴롭힘) 짧게 입력하시면 더 정확한 검색이 가능합니다.")
+        st.info("단어 위주로(예: 돈, 킥보드, 도박) 짧게 입력하시면 더 정확한 검색이 가능합니다.")
     else:
         st.caption(f"총 {found_count}개의 관련 시그널을 찾았습니다.")
 
 # 하단 안내
 st.divider()
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
