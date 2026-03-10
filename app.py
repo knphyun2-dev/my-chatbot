@@ -56,7 +56,7 @@ if user_input and df is not None:
             found_count += 1
             
             with st.container():
-                st.markdown(f"### 🔍 시그널 포착 {found_count}: **{category_name}**")
+                st.markdown(f"### 🔍 시그널 포착 #{found_count}: **{category_name}**")
                 
                 # 위험도에 따른 시각적 알림 (색상 매칭)
                 status = str(row.iloc[2])
@@ -89,6 +89,7 @@ if user_input and df is not None:
 st.divider()
 st.caption("🚨 긴급 상담이 필요하신가요? | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
 
 
 
