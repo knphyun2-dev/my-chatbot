@@ -35,7 +35,7 @@ df = load_data()
 st.markdown('<p class="main-title">🚨 POL-시그널</p>', unsafe_allow_html=True)
 st.subheader("학생들의 시그널을 포착합니다.")
 
-user_input = st.text_input("🔍 상황 입력", placeholder="예: 어제 학교 뒤에서 맞았다, 돈을 달라고 해요")
+user_input = st.text_input("🔍 상황 입력", placeholder="예: 어제 학교 뒤에서 맞았다, 돈을 뺏겼다")
 
 if user_input and df is not None:
     found_count = 0
@@ -92,5 +92,6 @@ st.caption("""
 
 # 상담 전화번호는 조금 더 눈에 띄게 배치
 st.info("📞 **도움이 필요할 때:** 학교폭력 117 | 범죄신고 112 | 청소년상담 1388")
+
 
 
