@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 1. 페이지 설정
-st.set_page_config(page_title="POL-시그널", page_icon="🚦", layout="centered")
+st.set_page_config(page_title="POL-시그널", page_icon="🚨", layout="centered")
 
 # 디자인 개선 커스텀 CSS
 
@@ -92,5 +92,6 @@ if user_input and df is not None:
 
 # 하단 안내
 st.divider()
-st.caption("🚨 **긴급 상담이 필요하신가요?** | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
+st.caption("🚨 긴급 상담이 필요하신가요? | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
+st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
 
