@@ -29,7 +29,7 @@ def load_data():
 df = load_data()
 
 # 3. 메인 화면
-st.markdown('<p class="main-title">📈 POL-시그널</p>', unsafe_allow_html=True)
+st.markdown('<p class="main-title">🚨POL-시그널</p>', unsafe_allow_html=True)
 st.subheader("학생들의 시그널을 포착합니다.")
 st.write("문장으로 입력하셔도 핵심 키워드를 찾아 시그널을 포착합니다.")
 
@@ -89,5 +89,6 @@ if user_input and df is not None:
 st.divider()
 st.caption("🚨 긴급 상담이 필요하신가요? | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
 
 
