@@ -72,7 +72,7 @@ if user_input and df is not None:
                 # 링크 버튼
                 url = str(row.iloc[3]).strip()
                 if url.startswith("http"):
-                    st.link_button(f"📄 '{category_name}' 대처 가이드 보기", url)
+                    st.link_button(f"📄 '{category_name}' 상세진단 및 대처방법 보기", url)
                 else:
                     st.caption("🔗 연결된 상세 가이드가 없습니다.")
                 
@@ -89,6 +89,7 @@ if user_input and df is not None:
 st.divider()
 st.caption("🚨 긴급 상담이 필요하신가요? | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
 st.caption("본 서비스는 입력된 키워드를 기반으로 시나리오를 매칭하며, 실제 상담은 전문 기관(경찰, 학교 등)을 통해 진행하시기 바랍니다.")
+
 
 
 
