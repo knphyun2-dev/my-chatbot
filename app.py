@@ -5,14 +5,19 @@ import pandas as pd
 st.set_page_config(page_title="POL-시그널", page_icon="🚦", layout="centered")
 
 # 디자인 개선 커스텀 CSS
+
 st.markdown("""
+
     <style>
-    .stAlert { margin-bottom: 20px; border-radius: 12px; }
+
+    .stAlert { margin-bottom: 20px; }
+
     .stButton>button { width: 100%; border-radius: 8px; font-weight: bold; }
-    .stTextInput>div>div>input { border-radius: 10px; }
+
     hr { margin: 30px 0; }
-    .main-title { font-size: 2.2rem; font-weight: 800; color: #1E3A8A; }
+
     </style>
+
     """, unsafe_allow_html=True)
 
 # 2. 데이터 로드 함수
@@ -88,3 +93,4 @@ if user_input and df is not None:
 # 하단 안내
 st.divider()
 st.caption("🚨 **긴급 상담이 필요하신가요?** | 학교폭력 신고 117 | 청소년 상담 1388 | 범죄신고 112")
+
