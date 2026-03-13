@@ -1,4 +1,11 @@
 import streamlit as st
+
+st.write("POL SIGNAL 챗봇")
+
+# keep alive
+st.markdown("alive")
+
+import streamlit as st
 import pandas as pd
 
 # 1. 페이지 설정 (아이콘은 사이렌 🚨 고정)
@@ -92,6 +99,7 @@ st.caption("""
 
 # 상담 전화번호는 조금 더 눈에 띄게 배치
 st.info("📞 **도움이 필요할 때:** 학교폭력 117 | 범죄신고 112 | 청소년상담 1388")
+
 
 
 
