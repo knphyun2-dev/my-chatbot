@@ -1,0 +1,23 @@
+name: Wake Up Streamlit App
+
+on:
+  schedule:
+    # 0, 30분에 한 번씩 (30분 간격으로 실행)
+    - cron: '0,30 * * * *'
+  workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼 생성
+
+jobs:
+  wake_up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Visit Streamlit with Real Browser (Headless)
+        run: |
+          # 1. 크롬 브라우저와 드라이버 설치 확인 및 실행
+          # 단순 curl이 아니라 실제 브라우저 엔진으로 페이지를 렌더링합니다.
+          timeout 60s google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://my-chatbot-ezgs37ztektdbciccuny6a.streamlit.app > /dev/null
+          
+      - name: Check Status
+        run: echo "Successfully visited the app to keep it awake!"
