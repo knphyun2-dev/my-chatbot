@@ -2,27 +2,26 @@ name: Wake Up Streamlit App
 
 on:
   schedule:
-    # 한국 시간 기준이 아닌 UTC 기준 매 3시간마다 실행 (0, 3, 6, 9...시)
-    - cron: '0 */3 * * *'
-  workflow_dispatch: # 직접 버튼 눌러서 실행해볼 수 있는 기능
+    - cron: '0 */3 * * *' # 3시간마다 실행
+  workflow_dispatch:
+
+# 1. 전역 환경 변수 설정 (가장 상단에 배치하여 모든 단계에 적용)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   wake_up:
     runs-on: ubuntu-latest
-    
-    # Node.js 24 경고 해결을 위한 환경 변수 설정
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     steps:
+      # 2. 소스 코드 체크아웃 (Node.js 24 환경에서 실행됨)
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 3. 실제 브라우저로 접속 시뮬레이션
       - name: Visit App with Headless Chrome
         run: |
-          # 1. 크롬 설치 및 실행 (실제 브라우저 렌더링 방식)
-          # 단순 curl보다 서버가 '실제 접속'으로 인식할 확률이 훨씬 높습니다.
+          # 불필요한 설치 과정을 줄이고 기본 크롬으로 접속
           google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://my-chatbot-ezgs37ztektdbciccuny6a.streamlit.app > /dev/null
           
-      - name: Execution Log
+      - name: Check Time
         run: echo "App visit completed at $(date)"
